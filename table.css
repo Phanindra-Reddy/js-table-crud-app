@@ -23,7 +23,12 @@ body{
   font-weight: 500;
   padding: 0px 5px;
 }
-
+.btn-sm{
+  width: 26px;
+  height: 30px;
+  padding: 2px;
+  cursor: pointer;
+}
 @media (max-width:470px){
   .main-heading{
     font-size:15px;
