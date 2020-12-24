@@ -96,7 +96,7 @@ function editEmp(id, selectedrow){
                     <td><input type="text" id="edit_emp_address" value="${employees[i].emp_address}" /></td>
                     <td>
                         <button id="${employees[i].id}" onclick="saveEditEmp(this.id)" class="btn btn-sm btn-success edit" title="Save"><i class="fa fa-save"></i></button>
-                        <button onclick="cancelEditEmp(this)" class="btn btn-sm btn-warning text-white" title="Cancel">X</button>
+                        <button onclick="cancelEditEmp()" class="btn btn-sm btn-warning text-white" title="Cancel">X</button>
                     </td>
             </tr>`;
         }
@@ -105,6 +105,22 @@ function editEmp(id, selectedrow){
 }
 
 function saveEditEmp(id){
-  console.log(id);
+    var employees = JSON.parse(localStorage.getItem('employees'));
+    
+    for(let i=0;i<employees.length;i++){
+        if(employees[i].id==id){
+            employees[i].id=id;
+            employees[i].emp_name = document.getElementById('edit_emp_name').value;
+            employees[i].emp_email = document.getElementById('edit_emp_email').value;
+            employees[i].emp_mobile = document.getElementById('edit_emp_mobile').value;
+            employees[i].emp_address = document.getElementById('edit_emp_address').value;
+        }
+    }
+    localStorage.setItem('employees', JSON.stringify(employees));
+    showEmpData();
+}
+
+function cancelEditEmp(){
+    showEmpData();
 }
 
